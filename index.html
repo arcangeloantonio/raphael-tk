@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Raphael Takahashi</title>
+        <meta charset="UTF-8">
+        <style>
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+            a, abbr, acronym, address, big, cite, code,
+            del, dfn, em, img, ins, kbd, q, s, samp,
+            small, strike, strong, sub, sup, tt, var,
+            b, u, i, center,
+            dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend,
+            table, caption, tbody, tfoot, thead, tr, th, td,
+            article, aside, canvas, details, embed, 
+            figure, figcaption, footer, header, hgroup, 
+            menu, nav, output, ruby, section, summary,
+            time, mark, audio, video {
+            	margin: 0;
+            	padding: 0;
+            	border: 0;
+            	font-size: 100%;
+            	font: inherit;
+            	vertical-align: baseline;
+            }
+            /* HTML5 display-role reset for older browsers */
+            article, aside, details, figcaption, figure, 
+            footer, header, hgroup, menu, nav, section {
+            	display: block;
+            }
+            body {
+            	line-height: 1;
+            }
+            ol, ul {
+            	list-style: none;
+            }
+            blockquote, q {
+            	quotes: none;
+            }
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+            	content: '';
+            	content: none;
+            }
+            table {
+            	border-collapse: collapse;
+            	border-spacing: 0;
+            }
+
+            .content {
+                max-width: 1268px;
+                margin:auto;
+            }
+
+            header {
+                background-color: #000000;
+                height: 75px;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+                height: 100%;
+            }
+
+            #menu-container {
+                display: flex;
+            }
+/*              https://codepen.io/erikterwan/pen/EVzeRP
+            #menu-container #container-header-logo {
+                flex-grow: 2;
+            }
+*/
+
+            #menu-container .hamburger {
+                display:none;
+                margin-top:25px;
+                cursor: pointer;
+                z-index: 3;
+            }
+
+            #menu-container .hamburger span
+            {
+              display: block;
+              width: 33px;
+              height: 4px;
+              margin-bottom: 5px;
+              position: relative;
+            
+              background: #FFFFFF;
+              border-radius: 3px;
+            
+              transform-origin: 4px 0px;
+            
+              transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                          background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                          opacity 0.55s ease;
+            }
+
+            #menu-container .hamburger span:first-child
+            {
+              transform-origin: 0% 0%;
+            }
+
+            #menu-container .hamburger span:nth-last-child(2)
+            {
+              transform-origin: 0% 100%;
+            }
+            
+             #menu-container #container-header-menu {
+                margin-left:30px;
+                /* flex-grow: 2; */
+            }
+
+            @media only screen and (max-width: 1000px) {
+                #menu-container #container-header-menu {
+                    order: 1;
+                    padding-right: 30px;
+                }
+
+                #menu-container #container-header-logo {
+                    order: 2;
+                    margin-left: auto 
+                }
+
+                #menu-container #container-header-menu ul {
+                    position: absolute;
+                    background:red;
+                    z-index: 2;
+                    height: 100%;
+                    width: 320px;
+                    top:0;
+                    left:0;
+                    padding:30px;
+                    padding-top:77px;
+
+                    box-sizing: border-box;
+                    overflow-y: auto;
+                    list-style-type: none;
+                    -webkit-font-smoothing: antialiased;
+                    /* to stop flickering of text in safari */
+  
+                    transform-origin: 0% 0%;
+                    transform: translate(-100%, 0);
+  
+                    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                }
+
+                #menu-container #container-header-menu ul.open {
+                    transform:none;
+                }
+
+                #menu-container #container-header-menu ul li {
+                    display:block;
+                }
+                
+                #menu-container .hamburger {
+                    display: block;
+                    position: relative;
+                }
+            }
+
+            #menu-container ul li {
+                list-style: none;
+                display: inline-block;
+                padding:29px 10px;
+                transition: 0.3s;
+            }
+
+            #menu-container ul li:hover {
+                background-color: #FFFFFF;
+            }
+
+            #menu-container ul li:hover a {
+                color:#000000;
+            }
+
+            #menu-container ul li a {
+                font-size:22px;
+                color:#FFFFFF;
+                text-decoration: none;
+            }
+
+
+
+
+.hamburger.open span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-16px, -8px);
+}
+
+.hamburger.open span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+.hamburger.open span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(-11px, 4px)
+} 
+
+
+
+            main section {
+                height: 400px;
+            }
+
+            .hero-image {
+                height: 400px;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("marketing.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+            }
+
+            .hero-text {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="content" id="mini-bar"></div>
+            <div class="content" id="menu-container">
+                <div id="container-header-logo">
+                    <img src="https://placehold.co/150x75"/>
+                </div>
+                <div id="container-header-menu">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="hero">
+                <div class="hero-image">
+                    <div class="hero-text">
+                      <h1 style="font-size:50px">Raphael Takahashi</h1>
+                      <p>Marketing</p>
+                    </div>
+                  </div>
+            </section>
+            <section id="about">SOBRE</section>
+            <section id="contact">CONTATO</section>
+        </main>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                document.querySelector('.hamburger').addEventListener('click', function(e) {
+                    document.querySelector('#container-header-menu ul').classList.toggle('open');
+                    document.querySelector('.hamburger').classList.toggle('open');
+                    document.querySelector('body').classList.toggle('menu-open');
+                });
+            }
+        </script>
+    </body>
+</html>
